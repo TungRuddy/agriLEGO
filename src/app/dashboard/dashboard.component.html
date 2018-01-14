@@ -1,0 +1,49 @@
+<div class="main-content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <p>Khu vực của bạn: {{userinfo[0].area}} </p>
+            </div>
+            
+            <div class="row" *ngFor='let category of categories;let i = index'>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="title">{{category.namecate}} :</h4>
+                        <div class="category">
+                            <ul class="nav nav-pills nav-pills-info">
+                                <li *ngFor="let part of category.parts">
+                                    <a (click)="showproduct(i,category.idcate,part.idpart)" data-toggle="tab">{{part.namepart}}</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                
+                    <div class="card-content table-responsive table-full-width">
+                        <div class="col-md-3" *ngFor="let product of products[i]">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="red"> 
+                                    +<span style="font-size:1.5em" CountTo="{{product.point}}" [from]="count.from" [duration]="count.duration"></span>
+                                   
+                                </div>
+                                <div class="card-content">
+                                    <p><span>{{product.gram}}</span>
+                                        <span class="category">gram</span>
+                                    </p>
+                                    <p><span>{{product.ml}}</span>
+                                        <span class="category">ml</span>
+                                    </p>
+                                    <h3 class="title">{{product.price | number}}<small> vnđ</small></h3>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-danger btn-round" (click)="order(product,category.idcate,category.namecate)">Đặt</button>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>
+</div>

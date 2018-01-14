@@ -1,0 +1,178 @@
+<div class="main-content">
+    <div class="container-fluid">
+            
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        
+                        <h4 class="title">Danh sách thông tin giao hàng</h4>
+                        <a class="btn btn-danger btnadd" data-toggle="modal" data-dismiss="modal" data-backdrop="false" data-target="#datlm"><i class="material-icons">add</i> Thêm</a>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-danger">
+                                <tr>
+                                    <th>id</th>
+                                    <th>Tên gọi</th>
+                                    <th>Số điện thoại</th>
+                               
+                                    <th>Phường/Xã</th>
+                                    <th>Quận/Huyện</th>
+                                    <th>Tỉnh/Thành</th>
+                                    <th>Công Cụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let moreaddres of moreaddress'>
+                                    <td>{{moreaddres.idmd}}</td>
+                                    <td>{{moreaddres.tag}}</td>
+                                    <td>{{moreaddres.phone}}</td>
+                            
+                                    <td>{{moreaddres.commune}}</td>  
+                                    <td>{{moreaddres.dictrict}}</td>
+                                    <td>{{moreaddres.city}}</td>
+                                    <td>    
+                                            <!-- fải có data-dismiss="modal" data-backdrop="false" mới sử dụng modal trên đt được -->
+                                            <a class="btn btn-success btn-round btn-just-icon" data-dismiss="modal" data-backdrop="false" data-toggle="modal" data-target="#myModal" (click)="Edit(moreaddres)">
+                                                <i class="material-icons">edit</i><div class="ripple-container"></div>
+                                            </a>
+                                            <a class="btn btn-danger btn-round  btn-just-icon" data-dismiss="modal" data-backdrop="false" data-toggle="modal" data-target="#modalDelete" (click)="xacnhandelete(moreaddres.idmd)">
+                                                <i class="material-icons">delete</i><div class="ripple-container"></div>
+                                            </a>
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            
+           
+        </div>
+      
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Sửa thông tin giao hàng</h4>
+            </div>
+            <div class="modal-body">
+                
+                        <p>id: {{address.idmd}}</p>
+                        
+                        <div class="col-md-12 form-group form-black label-floating is-focused">
+                            <label class="control-label">Tên gọi</label>
+                            <input type="text" [(ngModel)]="address.tag" name="tag" #tag="ngModel" class="form-control" required>
+                        </div>
+                        
+                        <div class="col-md-12 form-group form-black label-floating is-focused">
+                                <label class="control-label">Số điện thoại</label>
+                                <input type="text" [(ngModel)]="address.phone" #phone="ngModel" class="form-control" required>
+                        </div>
+                    
+                        <div class="col-md-12 form-group form-black label-floating is-focused">
+                                <label class="control-label">Phường/xã</label>
+                                <input type="text" [(ngModel)]="address.commune" #commune="ngModel" class="form-control" required>
+                        </div>
+                        <div class="col-md-12 form-group form-black label-floating is-focused">
+                                <label class="control-label">Quận/huyện</label>
+                                <input type="text" [(ngModel)]="address.dictrict" #dictrict="ngModel" class="form-control" required>
+                        </div>
+                        <div class="col-md-12 form-group form-black label-floating is-focused">
+                                <label class="control-label">Tỉnh/thành</label>
+                                <input type="text" [(ngModel)]="address.city" #city="ngModel" class="form-control" required>
+                        </div>
+                      
+                
+            </div>
+               
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+              <button type="button" class="btn btn-success" (click)="update()" data-dismiss="modal">Cập nhật</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+  <div class="modal fade" id="datlm" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+
+        <div class="modal-body">          
+                <div class="col-md-12 form-group form-black label-floating is-focused">
+                    <label class="control-label">Tên gọi</label>
+                    <input type="text" [(ngModel)]="insertaddress.tag" name="tag" #tag="ngModel" class="form-control" required>
+                </div>
+                
+                <div class="col-md-12 form-group form-black label-floating is-focused">
+                        <label class="control-label">Số điện thoại</label>
+                        <input type="text" [(ngModel)]="insertaddress.phone" name="phone" #phone="ngModel" class="form-control" required>
+                </div>
+            
+                <div class="col-md-12 form-group form-black label-floating is-focused">
+                        <label class="control-label">Phường/xã</label>
+                        <input type="text" [(ngModel)]="insertaddress.commune" name="commune" #commune="ngModel" class="form-control" required>
+                </div>
+                <div class="col-md-12 form-group form-black label-floating is-focused">
+                        <label class="control-label">Quận/huyện</label>
+                        <input type="text" [(ngModel)]="insertaddress.dictrict" name="dictrict" #dictrict="ngModel" class="form-control" required>
+                </div>
+                <div class="col-md-12 form-group form-black label-floating is-focused">
+                        <label class="control-label">Tỉnh/thành</label>
+                        <input type="text" [(ngModel)]="insertaddress.city" name="city" #city="ngModel" class="form-control" required>
+                </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)='insert()' data-dismiss="modal">Tạo</button>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+      
+  <div class="modal fade" tabindex="-1" id="modalDelete" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+            </div>
+            <div class="modal-body">
+                
+                     <p>Bạn Muốn Xóa ?</p>
+                      
+                
+            </div>
+               
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+              <button type="button" class="btn btn-success" (click)="delete(iddelete)" data-dismiss="modal">Xóa</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+              

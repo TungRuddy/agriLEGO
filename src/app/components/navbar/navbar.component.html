@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="../assets/css/w3.css">
+
+<nav class="navbar navbar-transparent navbar-absolute">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" (click)="sidebarToggle()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">{{getTitle()}}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="material-icons">shopping_cart</i>
+                        <p class="hidden-lg hidden-md">Mua hàng</p>
+                        <span class="notification">{{lists.length}}</span>
+                    </a>
+                    <ul class="dropdown-menu cart">
+                        <li>    
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Sản phẩm</strong></th>
+                                        <th><strong>gram</strong></th>
+                                        <th><strong>ml</strong></th>
+                                        <th><strong>Giá</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let list of lists">
+                                        <td>{{list.nameproduct}}</td>
+                                        <td>{{list.kg | number}}</td>
+                                        <td>{{list.ml | number}}</td>
+                                        <td>{{list.price | number}}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot *ngIf="checklist">
+                                   <tr>
+                                       <td align="right" colspan="4">
+                                            <strong>Tổng tiền:</strong> <span class="text-danger">{{totalprice | number }} vnđ</span>
+                                       </td>
+                                   </tr>
+                                </tfoot>
+                            </table>
+
+                        </li>
+                        
+                        <li *ngIf="checklist" class="text-center">
+                            <button (click)="gocheckout()" class="btn btn-danger btn-round">
+                                <i class="material-icons">check_circle</i>
+                                Thanh toán
+                            </button>
+                        </li>
+                        <li *ngIf="!checklist" class="text-center">Giỏ hàng trống...</li>
+                    </ul>
+                </li>
+               
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                       <i class="material-icons">person</i>
+                       <p class="hidden-lg hidden-md">Tài khoản</p>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="" data-backdrop="false" data-dismiss="modal" data-target="#Modalchangepassword" data-toggle="modal"><i class="material-icons">lock_outline</i> Đổi mật khẩu</a></li>
+                        <li><a href="" (click)="logout()"><i class="material-icons">power_settings_new</i> Đăng xuất</a></li>
+                       
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group form-black is-empty">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="material-input"></span>
+                </div>
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                    <i class="material-icons">search</i><div class="ripple-container"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Modal-->
+<div class="modal fade" tabindex="-1" id="Modalchangepassword" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+        <header class="w3-container w3-round w3-amber"> 
+            <h2 class="w3-opacity"><b>Đổi mật khẩu</b></h2>
+          </header>
+        <div class="w3-container">
+             
+            <div class="col-md-12 form-group form-black label-floating is-focused">
+                    <label class="w3-text-blue w3-opacity"><b>Mật khẩu cũ</b></label>
+                    <input class="w3-input w3-border"type="password" [(ngModel)]="password.cu" name="mkcu" #mkcu="ngModel" required>                    
+            </div>
+            <div class="col-md-12 form-group form-black label-floating is-focused">
+                    <label class="w3-text-blue w3-opacity"><b>Mật khẩu mới</b></label> 
+                    <input class="w3-input w3-border" type="password" [(ngModel)]="newpassword.password" name="mkmoi" #mkmoi="ngModel" required>
+                    <br>
+                    <br>
+            </div>
+
+                
+        </div>
+        <footer class="w3-container w3-amber w3-round w3-padding-small">
+            <div class="w3-right w3-padding-small">
+                <button type="button" class="w3-btn w3-round w3-red" data-dismiss="modal">Hủy</button>
+                <button type="button" class="w3-btn w3-round w3-brown" (click)="update()" data-dismiss="modal">Cập nhật</button>
+            </div>
+        </footer>
+
+      </div>
+      
+    </div>
+  </div>
+</nav>

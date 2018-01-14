@@ -1,0 +1,24 @@
+.centered{
+  margin: 0 auto;
+}
+
+.card-header {
+  background-color: #FFEB3B !important;
+  box-shadow: 0 12px 20px -10px rgba(243, 244, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(235, 244, 54, 0.2);
+}
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  color: rgba(0,0,0,.87) !important;
+}
+.btn {
+  background-color: #FFEB3B !important;
+  color: rgba(0,0,0,.87) !important;
+  box-shadow: 0 12px 20px -10px rgba(243, 244, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(235, 244, 54, 0.2);
+  font-weight: 500;
+
+}
+.btn:hover {
+  box-shadow: 0 12px 20px -10px rgba(243, 244, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(235, 244, 54, 0.2);
+}
+.nav-tabs-title{
+  font-weight: 500;
+}

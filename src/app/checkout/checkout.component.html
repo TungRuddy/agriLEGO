@@ -1,0 +1,196 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">  
+                    <div class="card-content">
+                                        <!-- Grid row -->
+                    <div class="row">
+
+                            <!-- Grid column -->
+                           
+                            <div class="col-md-2">
+                        
+                                <div class="steps-form-3">
+                                    <div class="steps-row-3 setup-panel-3 d-flex justify-content-between">
+                                        <div class="steps-step-3">
+                                            <a href="#step-8" type="button" class="btn btn-info btn-circle-3 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="kiểm tra giỏ hàng"><i class="material-icons icon">playlist_add_check</i></a>
+                                        </div>
+                                        <div class="steps-step-3">
+                                            <a href="#step-9" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Thông tin giao hàng"><i class="material-icons icon">supervisor_account</i></a>
+                                        </div>
+                                        <div class="steps-step-3">
+                                            <a href="#step-10" type="button" class="btn btn-pink btn-circle-3 waves-effect" data-toggle="tooltip" data-placement="top" title="Phương thức nhận hàng"><i class="material-icons icon">motorcycle</i></a>
+                                        </div>
+                                        <div class="steps-step-3 no-height">
+                                            <a href="#step-11" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Xác nhận mua hàng"><i class="material-icons icon">check</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                            </div>
+                            <!-- Grid column -->
+                        
+                            <!-- Grid column -->
+                            <div class="col-md-10">
+                        
+                                <form role="form" action="" method="post">
+                                    <div class="row setup-content-3" id="step-8">
+                                        <div class="col-md-12">
+                                            <h3 class="font-bold pl-0 my-4"><strong>Kiểm tra giỏ hàng</strong></h3>
+                                            <a href="/app/dashboard" class="btn btn-danger">Tiếp tục mua hàng?</a>
+                                            <div class="card">
+                                                    <div class="card-content table-responsive table-full-width">
+                                                        <table class="table">
+                                                            <thead class="text-danger">
+                                                                <th>Danh Mục</th>
+                                                                <th>Sản phẩm</th>
+                                                                <th>gram</th>
+                                                                <th>ml</th>
+                                                                <th>Giá</th>
+                                                                <th></th>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let list of userorder; let i = index">
+                                                                    <td>{{list.category}}</td>
+                                                                    <td>{{list.nameproduct}}</td>
+                                                                    <td>{{list.kg}}</td>
+                                                                    <td>{{list.ml}}</td>
+                                                                    <td class="text-danger">{{list.price | number}} vnđ</td>
+                                                                    <td>
+                                                                        <button (click)="remove(i)" class="btn btn-primary btn-round btn-just-icon">
+                                                                            <i class="material-icons">delete</i><div class="ripple-container"></div>
+                                                                        </button> 
+                                                                    </td>
+                                                                </tr>
+                                                                
+                                                                <tr>
+                                                                    
+                                                                    <td colspan="6">
+                                                                        <strong>Số lượng: 
+                                                                            <span class="text-danger">{{totalQuantity | number}}</span> sản phẩm
+                                                                        </strong><br>
+                                                                        <strong>Tổng tiền: 
+                                                                            <span class="text-danger">{{totalPrice | number}}</span> vnđ
+                                                                        </strong>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                
+                                                    </div>
+                                                </div>
+                                            <button class="btn btn-success btn-rounded nextBtn-3 float-right" type="button">Tiếp tục</button>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content-3" id="step-9">
+                                        <div class="col-md-12">
+                                            <h3 class="font-bold pl-0 my-4"><strong>Thông tin giao hàng</strong></h3>
+                                            <div class="dropdown">
+                                                    <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                                                        Chọn
+                                                        <b class="caret"></b>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li *ngFor="let add of address">
+                                                            <a (click)="selectaddress(add)">{{add.tag}}</a>
+                                                        </li>
+                                                       
+                                                    </ul>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-black is-empty">
+                                                        <label class="control-label">Người nhận</label>
+                                                        <input type="text" class="form-control validate" name="tag" [(ngModel)]="selectadd.tag" #tag="ngModel" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-black is-empty">
+                                                        <label class="control-label">Số điện thoại</label>
+                                                        <input type="text" class="form-control validate" name="phone" [(ngModel)]="selectadd.phone" #phone="ngModel" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-black is-empty">
+                                                            <label class="control-label">Địa chỉ</label>
+                                                            <input type="text" class="form-control validate" name="adres" [(ngModel)]="selectadd.address" #adres="ngModel" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="form-group form-black is-empty">
+                                                            <label class="control-label">Phường Xã</label>
+                                                            <input type="text" class="form-control validate" name="commune" [(ngModel)]="selectadd.commune" #commune="ngModel" required="required">
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="form-group form-black is-empty">
+                                                            <label class="control-label">Quận Huyện</label>
+                                                            <input type="text" class="form-control validate" name="dictrict" [(ngModel)]="selectadd.dictrict" #dictrict="ngModel" required="required">
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="form-group form-black is-empty">
+                                                            <label class="control-label">Tỉnh thành</label>
+                                                            <input type="text" class="form-control validate" name="city" [(ngModel)]="selectadd.city" #city="ngModel" required="required">
+                                                        </div>
+                                                </div>   
+                                            </div>
+                                            <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Trở lại</button>
+                                            <button class="btn btn-success btn-rounded nextBtn-3 float-right" type="button">Tiếp tục</button>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content-3" id="step-10">
+                                        <div class="col-md-12">
+                                            <h3 class="font-bold pl-0 my-4"><strong>Phương thức nhận hàng</strong></h3>
+                                            <br><br>
+                                            <ul class="nav nav-pills nav-pills-icons nav-pills-primary" role="tablist">
+                                                <li class="active">
+                                                    <a href=""  role="tab" data-toggle="tab">
+                                                        <i class="material-icons">local_shipping</i>
+                                                        Nhận hàng tại nhà
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" role="tab" data-toggle="tab">
+                                                        <i class="material-icons">directions_run</i>
+                                                        Tự đến aPoint gần nhất
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" role="tab" data-toggle="tab">
+                                                        <i class="material-icons">directions_bike</i>
+                                                        Tự đến aPoint theo tuyến
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <br><br>
+                                            <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Trở lại</button>
+                                            <button class="btn btn-success btn-rounded nextBtn-3 float-right" type="button">Tiếp tục</button>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-content-3" id="step-11">
+                                        <div class="col-md-12">
+                                            <h3 class="font-bold pl-0 my-4"><strong>Xác nhận đặt hàng</strong></h3>
+                                            <h4 class="font-bold my-1">Sau khi bạn thanh toán, AgriLEGO sẽ xử lý đơn hàng và gọi cho bạn để xác nhận đơn hàng của bạn.</h4>
+                                            <h4 class="font-bold my-1">Cảm ơn bạn đã sử dụng dịch vụ của AgriLEGO!!</h4>
+                                            <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Trở lại</button>
+                                            <button class="btn btn-success btn-rounded float-right" (click)="confirmOrder()">Mua hàng</button>
+                                        </div>
+                                    </div>
+                                </form>
+                        
+                            </div>
+                            <!-- Grid column -->
+                        
+                        </div>
+                        <!-- Grid row -->        
+                    </div>         
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

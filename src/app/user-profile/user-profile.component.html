@@ -1,0 +1,60 @@
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="title">Chỉnh sửa thông tin</h4>
+                    <p class="category" style="color:#fff">Bạn sẽ phải đăng nhập lại nếu bạn thay đổi thông tin!</p>
+                </div>
+                <div class="card-content">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty is-focused">
+                                    <label class="control-label">Email</label>
+                                    <input type="email" value="{{userinfo[0].email}}" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty is-focused">
+                                    <label class="control-label">Họ & Tên</label>
+                                    <input type="text" [(ngModel)]="userinfo[0].fullname" name="fullname" #fullname="ngModel" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty is-focused">
+                                    <label class="control-label">Năm sinh</label>
+                                    <input type="text" class="form-control" [(ngModel)]="userinfo[0].birthday" name="birthday" #birthday="ngModel" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  maxlength="4" required >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty is-focused">
+                                    <label class="control-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" [(ngModel)]="userinfo[0].phone" name="phone" #phone="ngModel" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  maxlength="12" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-black label-floating is-empty is-focused">
+                                    <label class="control-label">Địa chỉ</label>
+                                    <input type="text" [(ngModel)]="userinfo[0].address" name="address" #address="ngModel" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-warning pull-right" (click)="update()">Cập nhật</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+</div>
